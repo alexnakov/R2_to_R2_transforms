@@ -17,7 +17,6 @@
 </body>
     <script>
         const parent = document.getElementById('svg1')
-
         const addLineToSvg = function (svgParent, x1, y1, x2, y2) {
             var newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
             newLine.setAttribute('x1', x1);
@@ -28,7 +27,9 @@
             parent.append(newLine);
         }
 
-        addLineToSvg(parent, 10, 10, 105, 10)        
-
+        for (let y = 5; y < 50; y += 6) {
+            addLineToSvg(parent, 10, y, 105, y)        
+        }
+        
     </script>
 </html>
