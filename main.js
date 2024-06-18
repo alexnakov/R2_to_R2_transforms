@@ -14,14 +14,14 @@ window.onload = function() {
     ctx.strokeStyle = 'whitesmoke';
     ctx.lineWidth = 1;
 
-    for (let x = 0; x <= canvas.width; x += gridSpacingX) {
+    for (let x = -1000; x <= 1000; x += gridSpacingX) {
         ctx.beginPath()
         ctx.moveTo(x, 0)
         ctx.lineTo(x, canvas.height)
         ctx.stroke()
     }
 
-    for (let y = 0; y <= canvas.height; y += gridSpacingY) {
+    for (let y = -1000; y <= 1000; y += gridSpacingY) {
         ctx.beginPath()
         ctx.moveTo(0, y)
         ctx.lineTo(canvas.width, y)
@@ -58,9 +58,9 @@ const showCanvas2 = function() {
 
     ctx.fillStyle = 'red';
 
-    for (let y = 0; y <= canvas.height; y += 25) {
-        for (let x = 0; x <= canvas.width; x += 1) {
-            var x_ = x
+    for (let y = -1000; y <= 1000; y += 25) {
+        for (let x = -1000; x <= 1000; x += 1) {
+            var x_ = x 
             var y_ = y
             var xCoord = x_;
             var yCoord = y_;
@@ -69,9 +69,9 @@ const showCanvas2 = function() {
         }
     }
 
-    for (let x = 0; x <= canvas.width; x += 50) {
-        for (let y = 0; y <= canvas.height; y += 1) {
-            var x_ = x
+    for (let x = -1000; x <= 1000; x += 50) {
+        for (let y = -1000; y <= 1000; y += 1) {
+            var x_ = 2*x
             var y_ = y
             var xCoord = x_;
             var yCoord = y_;
