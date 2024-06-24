@@ -1,85 +1,59 @@
-window.onload = function() {
-    const canvas = document.getElementById('canvas1');
-    const ctx = canvas.getContext('2d');
+const sqrt2 = Math.sqrt(2)
 
-    console.log(canvas.width)
-    console.log(canvas.height)
-
-    // Grid spacing cannot be relative, it needs to be absolute
-    const gridSpacingX = 50;
-    const gridSpacingY = 25;
-
-    ctx.fillStyle = 'black'
-    ctx.fillRect(0, 0, 300, 150)
-    ctx.strokeStyle = 'whitesmoke';
-    ctx.lineWidth = 1;
-
-    for (let x = -1000; x <= 1000; x += gridSpacingX) {
-        ctx.beginPath()
-        ctx.moveTo(x, 0)
-        ctx.lineTo(x, canvas.height)
-        ctx.stroke()
-    }
-
-    for (let y = -1000; y <= 1000; y += gridSpacingY) {
-        ctx.beginPath()
-        ctx.moveTo(0, y)
-        ctx.lineTo(canvas.width, y)
-        ctx.stroke()
-    }
-
-    ctx.strokeStyle = 'aqua'
-    ctx.lineWidth = 2;
-
-    ctx.beginPath()
-    ctx.moveTo(0, 75)
-    ctx.lineTo(350, 75)
-    ctx.stroke()
-
-    ctx.beginPath()
-    ctx.moveTo(150, 0)
-    ctx.lineTo(150, 150)
-    ctx.stroke()
-
-    // fill origin grey
-    ctx.fillStyle = 'grey';
-    ctx.fillRect(148, 73, 4, 4)
+const addLineToSvg = function (svgParent, x1, y1, x2, y2) {
+  var newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  newLine.setAttribute('x1', x1);
+  newLine.setAttribute('y1', y1);
+  newLine.setAttribute('x2', x2);
+  newLine.setAttribute('y2', y2);
+  newLine.setAttribute("stroke", "black")
+  svgParent.appendChild(newLine);
 }
 
-// Ideally you would have the matrix params to pass
-const showCanvas2 = function() {
-    const canvas = document.getElementById('canvas2');
-    const ctx = canvas.getContext('2d');
+const svgParent = document.getElementById("svg1")
 
-    ctx.fillStyle = 'black'
-    ctx.fillRect(0, 0, 350, 250)
-    ctx.strokeStyle = 'whitesmoke';
-    ctx.lineWidth = 1;
-
-    ctx.fillStyle = 'red';
-
-    for (let y = -1000; y <= 1000; y += 25) {
-        for (let x = -1000; x <= 1000; x += 1) {
-            var x_ = x 
-            var y_ = y
-            var xCoord = x_;
-            var yCoord = y_;
-            
-            ctx.fillRect(xCoord, yCoord, 1, 1)
-        }
-    }
-
-    for (let x = -1000; x <= 1000; x += 50) {
-        for (let y = -1000; y <= 1000; y += 1) {
-            var x_ = 2*x
-            var y_ = y
-            var xCoord = x_;
-            var yCoord = y_;
-            
-            ctx.fillRect(xCoord, yCoord, 1, 1)
-        }
-    }
-
-    ctx.fillStyle = 'aqua';
-    ctx.fillRect(148, 73, 4, 4)
+for (let i = 0; i <= 300; i+=50) {
+  addLineToSvg(svgParent, i, 0, i, 300)
 }
+
+for (let i = 0; i <= 300; i+=50) {
+  addLineToSvg(svgParent, 0, i, 300, i)
+}
+
+const rotLine45 = function() {
+  const line1 = document.getElementById('line1')
+
+  let x1 = parseFloat(line1.getAttribute('x1'));
+  let y1 = parseFloat(line1.getAttribute('y1'));
+  let x2 = parseFloat(line1.getAttribute('x2'));
+  let y2 = parseFloat(line1.getAttribute('y2'));
+
+  const center_x = 150
+  const center_y = 150
+
+  // Translation
+  x1 = x1 - center_x
+  x2 = x2 - center_x
+  y1 = y1 - center_y
+  y2 = y2 - center_y
+
+  // Rotation around O
+  r_x1 = sqrt2/2*(x1-y1)
+  // You just changed the x-val so next line uses the new one 😅
+  r_y1 = sqrt2/2*(x1+y1) 
+  r_x2 = sqrt2/2*(x2-y2)
+  r_y2 = sqrt2/2*(x2+y2)
+
+  // Backtranslation
+  x1 = r_x1 + center_x
+  x2 = r_x2 + center_x
+  y1 = r_y1 + center_y
+  y2 = r_y2 + center_y
+
+  line1.setAttribute('x1', x1)
+  line1.setAttribute('y1', y1)
+  line1.setAttribute('x2', x2)
+  line1.setAttribute('y2', y2)
+}
+
+rotLine45()
