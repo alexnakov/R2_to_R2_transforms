@@ -22,31 +22,22 @@
 </head>
 <body>
     <h1>R2 -> R2 vizualiser</h1>
-    <section>
-        <p id="example-latex">
-            \[ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
-         </p>
-         <hr>
-        <h2>Transformation t</h2>
-        <p id="main-mt-transform2">
-            \[ 
-                \begin{bmatrix}
-                    x  \\
-                    y
-                \end{bmatrix} 
-                \mapsto
-                \begin{bmatrix}
-                    2x+y  \\
-                    x-3y
-                \end{bmatrix} 
-            \]
-        </p>
-        <canvas id="canvas1"></canvas>
-    </section>
-    <section>
-        <h2>\[W = t(V)\]</h2>
-        <button style="display: block; margin: auto; margin-bottom: 25px;" onclick="showCanvas2()">Show</button>
-        <canvas id="canvas2"></canvas>
-    </section>  
+    <h2>Transformation t</h2>
+    <p id="main-mt-transform2">
+        \[ 
+            \begin{bmatrix}
+                x  \\
+                y
+            \end{bmatrix} 
+            \mapsto
+            \begin{bmatrix}
+                2x+y  \\
+                x-3y
+            \end{bmatrix} 
+        \]
+    </p>
+    <svg id="mySVG" style="width:300px;height:300px;border:1px solid black;display:block;margin:auto;">
+
+    </svg>
 </body>
 </html>
