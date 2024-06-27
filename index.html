@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
-  <style>
-      h1, h2 { text-align: center; }
-      svg {
-          display: block;
-          border: 1px solid black;
-          margin: auto;
-          margin-top: 2.5em;
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="main.js"></script>
+
+    <style>
+        h1, h2 { text-align: center; }
+        canvas {
+            display: block;
+            width: 300px;
+            height: 250px;
+            border: 1px solid purple;
+            margin: auto ;
+        }
   </style>
   <script defer src="main.js"></script>
 </head>
 <body>
-  <h1>R2 -> R2 vizualiser</h1>
-  <section>
-    <p id="example-latex">
-        \[ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
-      </p>
-      <hr>
-    <h2>Transformation t</h2>
-    <p id="main-mt-transform2">
-        \[ 
-            \begin{bmatrix}
-                x  \\
-                y
-            \end{bmatrix} 
-            \mapsto
-            \begin{bmatrix}
-                2x+y  \\
-                x-3y
-            \end{bmatrix} 
-        \]
-    </p>
-    
-    <!--  Svg 1 goes here -->
-    <svg id="svg1" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="150" cy="150" r="2" stroke="green" stroke-width="2"/>
-      <line id="line1" x1="-500" y1="150" x2="500" y2="150" stroke-width="2" stroke="navy"></line>
-      <line id="line2" x1="150" y1="-1000" x2="150" y2="1000" stroke-width="2" stroke="navy"></line>
-    </svg>
-
-  </section>
+    <h1>R2 -> R2 vizualiser</h1>
+    <section>
+        <p id="example-latex">
+            \[ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+         </p>
+         <hr>
+        <h2>Transformation t</h2>
+        <p id="main-mt-transform2">
+            \[ 
+                \begin{bmatrix}
+                    x  \\
+                    y
+                \end{bmatrix} 
+                \mapsto
+                \begin{bmatrix}
+                    2x+y  \\
+                    x-3y
+                \end{bmatrix} 
+            \]
+        </p>
+        <canvas id="canvas1"></canvas>
+    </section>
+    <section>
+        <h2>\[W = t(V)\]</h2>
+        <button style="display: block; margin: auto; margin-bottom: 25px;" onclick="showCanvas2()">Show</button>
+        <canvas id="canvas2"></canvas>
+    </section>  
 </body>
     
 </html>
