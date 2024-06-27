@@ -25,7 +25,6 @@ window.onload = function() {
   }
 
   l1 = linesCoords
-  console.log(linesCoords)
 }
 
 const applyLinearTransform = function() {
