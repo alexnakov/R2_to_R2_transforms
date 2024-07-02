@@ -14,13 +14,16 @@
   <style>
     h1, h2 { text-align: center; font-family: "Lora"; }
     #eq1 { font-size: 36px; }
-    #editable-mi {cursor: pointer;color:red}
+    #editable-mi {cursor: pointer;color:red;}
     button {display:block;margin:20px auto}
+    .math-container { 
+      display: flex; width: 100%; justify-content: center;
+      position: relative;
+    }
     .input-overlay {
       position: absolute; /* Position relative to the nearest positioned ancestor */
       top: 0;
       left: 0;
-      transform: translate(0, -50%); /* Adjust as needed to align correctly */
       z-index: 10; /* Ensure it is above other content */
       outline: none;
     }
@@ -32,7 +35,7 @@
     <h1>R2 -> R2 vizualiser</h1>
     <h2>Transformation t</h2>
     
-    <div class="math-container" style="display: flex; width: 100%; justify-content: center;">
+    <div class="math-container">
       <math id="eq1" xmlns="http://www.w3.org/1998/Math/MathML">
         <mi>y</mi>
         <mo>=</mo>

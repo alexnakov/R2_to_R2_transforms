@@ -31,16 +31,16 @@ function changeM() {
   inputElement.type = 'text'
   inputElement.value = miElement.textContent
   inputElement.className = 'input-overlay'
+  inputElement.style.fontSize = `${24}px`
 
   const miElementRect = miElement.getBoundingClientRect()
   const mathEqContainerRect = mathEqContainer.getBoundingClientRect()
 
   console.log(miElementRect)
 
-  inputElement.style.top = `${miElementRect.top + 5}px`
   inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left + 2}px`
-  inputElement.style.width = `${miElementRect.width - 2}px`
-  inputElement.style.height = `${miElementRect.height + 2}px`
+  inputElement.style.width = `${miElementRect.width - 10}px`
+  inputElement.style.height = `${30}px`
 
   mathEqContainer.appendChild(inputElement)
   disableChangeMButton()
