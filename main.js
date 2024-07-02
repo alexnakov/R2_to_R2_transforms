@@ -56,6 +56,20 @@ function disableChangeMButton() {
   changeBtn.style.pointerEvents = 'none'
 }
 
+function enableChangeMButton() {
+  const changeBtn = document.getElementById('change-btn')
+  changeBtn.style.pointerEvents = 'auto'
+}
+
+function saveNewM() {
+  const inputElement = document.getElementsByClassName('input-overlay')[0]
+  const miElement = document.getElementById('editable-mi')
+
+  miElement.textContent = inputElement.value
+  inputElement.remove()
+  enableChangeMButton()
+}
+
 const applyLinearTransform = function() {
   coords2 = []
   for (let i = 0; i < linesCoords.length; i++) {
