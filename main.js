@@ -66,6 +66,8 @@ function enableChangeMButton() {
 
 function saveNewM() {
   const inputElement = document.getElementsByClassName('input-overlay')[0]
+  if (inputElement.value == '') {return;}
+
   const miElement = document.getElementById('editable-mi')
   miElement.style.fontSize = '36px'
   miElement.style.visibility = 'visible'
