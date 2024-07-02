@@ -17,14 +17,20 @@
     #editable-mi {cursor: pointer;color:red;}
     button {display:block;margin:20px auto}
     .math-container { 
-      display: flex; width: 100%; justify-content: center;
+      display: inline-block;
       position: relative;
     }
     .input-overlay {
       position: absolute; /* Position relative to the nearest positioned ancestor */
+      display: inline-block;
       left: 0;
+      top: 0;
       z-index: 10; /* Ensure it is above other content */
       outline: none;
+      padding: 0;
+      margin: 0;
+      font-size: inherit;
+      font-family: inherit;
     }
   </style>
   <script defer src="main.js"></script>

@@ -1,4 +1,9 @@
 const linesCoords = []
+let l1;
+let l2;
+
+var miElementHeight = miElement.getBoundingClientRect().height;
+var miElementTop = miElement.getBoundingClientRect().top - mathEqContainerRect.getBoundingClientRect().top
 
 window.onload = function() {
   const svg = document.getElementById('mySVG');
@@ -26,6 +31,8 @@ window.onload = function() {
 }
 
 function changeM() {
+  const inputBorderWidth = 2;
+
   const miElement = document.getElementById('editable-mi')
   const mathEqContainer = miElement.closest('.math-container')
 
@@ -33,19 +40,17 @@ function changeM() {
   inputElement.type = 'text'
   inputElement.value = miElement.textContent
   inputElement.className = 'input-overlay'
-  inputElement.style.fontSize = `${24}px`
 
   const miElementRect = miElement.getBoundingClientRect()
   const mathEqContainerRect = mathEqContainer.getBoundingClientRect()
 
-  console.log(miElementRect)
-
-  inputElement.style.top = `${miElement.y}`
+  inputElement.style.top = `${miElementTop}px`
   inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left}px`
-  inputElement.style.width = `${miElementRect.width - 10}px`
-  inputElement.style.height = `${30}px`
+  inputElement.style.width = `${miElementRect.width - 2*inputBorderWidth}px`
+  inputElement.style.height = `${miElementHeight}px`
 
   mathEqContainer.appendChild(inputElement)
+  miElement.style.visibility = 'hidden'
   disableChangeMButton()
 }
 
@@ -63,9 +68,8 @@ function saveNewM() {
   const inputElement = document.getElementsByClassName('input-overlay')[0]
   const miElement = document.getElementById('editable-mi')
   miElement.style.fontSize = '36px'
+  miElement.style.visibility = 'visible'
   miElement.textContent = inputElement.value
-
-  console.log(miElement.getBoundingClientRect())
 
   inputElement.remove()
   enableChangeMButton()
