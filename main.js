@@ -35,6 +35,7 @@ function changeToInput(target) {
   inputElement.type = 'text'
   inputElement.value = target.textContent
   inputElement.className = 'input-overlay'
+  inputElement.setAttribute('mi-id', `${target.getAttribute(`mi-id`)}`)
 
   console.log(window.getComputedStyle(target).left)
   console.log(target.getBoundingClientRect().left)
