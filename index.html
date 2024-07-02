@@ -14,28 +14,31 @@
   <style>
     h1, h2 { text-align: center; font-family: "Lora"; }
     #eq1 { font-size: 150%; }
-    #im1 {cursor: pointer;color:red}
+    #editable-mi {cursor: pointer;color:red}
+    button {display:block;margin:20px auto}
   </style>
 </head>
+
 <body>
     <h1>R2 -> R2 vizualiser</h1>
     <h2>Transformation t</h2>
-    <div class="mt-transform" style="display: flex; width: 100%; justify-content: center;">
+    
+    <div class="math-container" style="display: flex; width: 100%; justify-content: center;">
       <math id="eq1" xmlns="http://www.w3.org/1998/Math/MathML">
         <mi>y</mi>
         <mo>=</mo>
-        <mi id="im1" onclick="swapMiWithInput(this)">m</mi>
+        <mi id="editable-mi">m</mi>
         <mi>x</mi>
         <mo>+</mo>
         <mi>c</mi>
       </math>
     </div>
-    
-    
-    
-    <button style="display:block;margin:20px auto;" onclick="applyLinearTransform()">Transform Plane</button>
-    <svg id="mySVG" style="width:300px;height:300px;border:1px solid black;display:block;margin:auto;">
 
+    <button onclick="changeM()">Change M</button>
+    <button>Save M</button>
+    <button onclick="applyLinearTransform()">Transform Plane</button>
+
+    <svg id="mySVG" style="width:300px;height:300px;border:1px solid black;display:block;margin:auto;">
     </svg>
 </body>
 </html>

@@ -27,21 +27,21 @@ window.onload = function() {
   l1 = linesCoords
 }
 
-function swapMiWithInput(element) {
-  const elementWidth = element.clientWidth
-  
-  const input = document.createElementNS('http://www.w3.org/1999/xhtml', 'input')
-  input.style.width = elementWidth + 'px'
-  input.style.outline = 'none'
-  input.style.overflowX = 'none'
-  input.addEventListener('click', () => {
-    const mathEl = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi')
-    mathEl.textContent = input.value
-    input.parentElement.replaceChild(mathEl, input)
-  })
+function changeM() {
+  const miElement = document.getElementById('editable-mi')
+  const mathEqContainer = miElement.closest('.math-container')
 
-  element.parentNode.replaceChild(input, element)
-} 
+  const inputElement = document.createElementNS('http://www.w3.org/1999/xhtml','input')
+  inputElement.type = 'text'
+  inputElement.value = miElement.textContent
+  inputElement.className = 'input-overlay'
+
+  const miElementRect = miElement.getBoundingClientRect()
+  const mathEqContainerRect = mathEqContainer.getBoundingClientRect()
+
+  console.log(miElementRect)
+  console.log(mathEqContainerRect)
+}
 
 const applyLinearTransform = function() {
   coords2 = []
