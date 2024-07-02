@@ -88,8 +88,8 @@ function enableChangeMButton() {
 }
 
 function saveNewM() {
-  const inputElement = document.getElementsByClassName('input-overlay')[0]
-  if (inputElement.value == '') {return;}
+  const inputElements = document.getElementsByClassName('input-overlay')
+  if (inputElements.includes('')) {return;}
 
   const miElement = document.getElementById('editable-mi')
   miElement.style.fontSize = '36px'
