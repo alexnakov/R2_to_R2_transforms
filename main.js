@@ -1,3 +1,5 @@
+const linesCoords = []
+
 window.onload = function() {
   const svg = document.getElementById('mySVG');
   for (let i = -500; i <= 500; i += 50) {
@@ -38,7 +40,8 @@ function changeM() {
 
   console.log(miElementRect)
 
-  inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left + 2}px`
+  inputElement.style.top = `${miElement.y}`
+  inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left}px`
   inputElement.style.width = `${miElementRect.width - 10}px`
   inputElement.style.height = `${30}px`
 
@@ -60,8 +63,10 @@ function saveNewM() {
   const inputElement = document.getElementsByClassName('input-overlay')[0]
   const miElement = document.getElementById('editable-mi')
   miElement.style.fontSize = '36px'
-
   miElement.textContent = inputElement.value
+
+  console.log(miElement.getBoundingClientRect())
+
   inputElement.remove()
   enableChangeMButton()
 }
