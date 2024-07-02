@@ -1,9 +1,6 @@
-const linesCoords = []
-let l1;
-let l2;
-
-var miElementHeight = miElement.getBoundingClientRect().height;
-var miElementTop = miElement.getBoundingClientRect().top - mathEqContainerRect.getBoundingClientRect().top
+var linesCoords = []
+var l1;
+var l2;
 
 window.onload = function() {
   const svg = document.getElementById('mySVG');
@@ -88,16 +85,22 @@ function enableChangeMButton() {
 }
 
 function saveNewM() {
-  const inputElements = document.getElementsByClassName('input-overlay')
-  if (inputElements.includes('')) {return;}
+  // const inputElements = document.getElementsByClassName('input-overlay')
+  // console.log(inputElements)
+  // if (inputElements.includes('')) {return;}
 
-  const miElement = document.getElementById('editable-mi')
-  miElement.style.fontSize = '36px'
-  miElement.style.visibility = 'visible'
-  miElement.textContent = inputElement.value
+  const miElements = document.querySelectorAll(`mi[mi-changeable]`)
+  const inputElements = document.querySelectorAll(`input.input-overlay`)
 
-  inputElement.remove()
-  enableChangeMButton()
+  console.log(inputElements)
+
+  // const miElement = document.getElementById('editable-mi')
+  // miElement.style.fontSize = '36px'
+  // miElement.style.visibility = 'visible'
+  // miElement.textContent = inputElement.value
+
+  // inputElement.remove()
+  // enableChangeMButton()
 }
 
 const applyLinearTransform = function() {
