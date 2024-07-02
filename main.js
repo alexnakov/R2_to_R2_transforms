@@ -40,7 +40,6 @@ function changeM() {
   const mathEqContainerRect = mathEqContainer.getBoundingClientRect()
 
   console.log(miElementRect)
-  console.log(mathEqContainerRect)
 
   inputElement.style.top = `${miElementRect.top + 5}px`
   inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left + 2}px`
@@ -64,6 +63,7 @@ function enableChangeMButton() {
 function saveNewM() {
   const inputElement = document.getElementsByClassName('input-overlay')[0]
   const miElement = document.getElementById('editable-mi')
+  miElement.style.fontSize = '36px'
 
   miElement.textContent = inputElement.value
   inputElement.remove()
