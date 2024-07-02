@@ -41,6 +41,19 @@ function changeM() {
 
   console.log(miElementRect)
   console.log(mathEqContainerRect)
+
+  inputElement.style.top = `${miElementRect.top + 5}px`
+  inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left + 2}px`
+  inputElement.style.width = `${miElementRect.width - 2}px`
+  inputElement.style.height = `${miElementRect.height + 2}px`
+
+  mathEqContainer.appendChild(inputElement)
+  disableChangeMButton()
+}
+
+function disableChangeMButton() {
+  const changeBtn = document.getElementById('change-btn')
+  changeBtn.style.pointerEvents = 'none'
 }
 
 const applyLinearTransform = function() {

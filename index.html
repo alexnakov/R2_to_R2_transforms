@@ -16,6 +16,14 @@
     #eq1 { font-size: 150%; }
     #editable-mi {cursor: pointer;color:red}
     button {display:block;margin:20px auto}
+    .input-overlay {
+      position: absolute; /* Position relative to the nearest positioned ancestor */
+      top: 0;
+      left: 0;
+      transform: translate(0, -50%); /* Adjust as needed to align correctly */
+      z-index: 10; /* Ensure it is above other content */
+      outline: none;
+    }
   </style>
 </head>
 
@@ -34,7 +42,7 @@
       </math>
     </div>
 
-    <button onclick="changeM()">Change M</button>
+    <button id="change-btn" onclick="changeM()">Change M</button>
     <button>Save M</button>
     <button onclick="applyLinearTransform()">Transform Plane</button>
 
