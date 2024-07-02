@@ -35,18 +35,13 @@ function changeToInput(target) {
   inputElement.type = 'text'
   inputElement.value = target.textContent
   inputElement.className = 'input-overlay'
-  inputElement.setAttribute('mi-id', `${target.getAttribute(`mi-id`)}`)
-
-  console.log(window.getComputedStyle(target).left)
-  console.log(target.getBoundingClientRect().left)
+  inputElement.setAttribute('data-id', `${target.getAttribute(`data-id`)}`)
 
   inputElement.style.top = `${0}px`
   inputElement.style.left = `${target.getBoundingClientRect().left - mathEqContainer.getBoundingClientRect().left}px`
   inputElement.style.width = `${target.getBoundingClientRect().width - inputBorderWidth}px`
   inputElement.style.top = `${window.getComputedStyle(target).height}px`
   inputElement.style.minWidth = `20px`
-
-  console.log(target.getBoundingClientRect().width - inputBorderWidth)
 
   mathEqContainer.appendChild(inputElement)
 }
@@ -93,7 +88,14 @@ function saveNewM() {
   const miElements = document.querySelectorAll(`mi[mi-changeable]`)
   const inputElements = document.querySelectorAll(`input.input-overlay`)
 
-  console.log(inputElements)
+  for (let inputElement of inputElements) {
+    if (inputElement == '') {continue}
+
+    console.log(inputElement.getAttribute(`data-id`))
+    console.log(`mi[data-id="${inputElement.getAttribute(`data-id`)}"]`)
+    const miElement = document.querySelector(`mi[mi-changeable]`)
+    console.log(miElement)
+  }
 
   // const miElement = document.getElementById('editable-mi')
   // miElement.style.fontSize = '36px'
