@@ -25,8 +25,23 @@ window.onload = function() {
   }
 
   l1 = linesCoords
-  console.log(linesCoords)
 }
+
+function swapMiWithInput(element) {
+  const elementWidth = element.clientWidth
+  
+  const input = document.createElementNS('http://www.w3.org/1999/xhtml', 'input')
+  input.style.width = elementWidth + 'px'
+  input.style.outline = 'none'
+  input.style.overflowX = 'none'
+  input.addEventListener('click', () => {
+    const mathEl = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi')
+    mathEl.textContent = input.value
+    input.parentElement.replaceChild(mathEl, input)
+  })
+
+  element.parentNode.replaceChild(input, element)
+} 
 
 const applyLinearTransform = function() {
   coords2 = []

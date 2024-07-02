@@ -13,15 +13,22 @@
 
   <style>
     h1, h2 { text-align: center; font-family: "Lora"; }
-    #transform-eq { font-size: 150%; }
-    .input { color: red;}
+    #eq1 { font-size: 150%; }
+    #im1 {cursor: pointer;color:red}
   </style>
 </head>
 <body>
     <h1>R2 -> R2 vizualiser</h1>
     <h2>Transformation t</h2>
     <div class="mt-transform" style="display: flex; width: 100%; justify-content: center;">
-      <math id="transform-eq" xmlns="http://www.w3.org/1998/Math/MathML"><mfenced open="[" close="]"><mtable><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr></mtable></mfenced><mo>=</mo><mfenced open="[" close="]"><mtable><mtr><mtd><mi class="input a">a</mi><mi>x</mi><mo>+</mo><mi class="input b">b</mi><mi>y</mi></mtd></mtr><mtr><mtd><mi class="input c">c</mi><mi>x</mi><mo>+</mo><mi class="input d">d</mi><mi>y</mi></mtd></mtr></mtable></mfenced></math>
+      <math id="eq1" xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>y</mi>
+        <mo>=</mo>
+        <mi id="im1" onclick="swapMiWithInput(this)">m</mi>
+        <mi>x</mi>
+        <mo>+</mo>
+        <mi>c</mi>
+      </math>
     </div>
     
     
