@@ -30,6 +30,29 @@ window.onload = function() {
   l1 = linesCoords
 }
 
+function changeToInput(target) {
+  const inputBorderWidth = 4;
+  const mathEqContainer = target.closest('.math-container')
+
+  const inputElement = document.createElementNS('http://www.w3.org/1999/xhtml','input')
+  inputElement.type = 'text'
+  inputElement.value = target.textContent
+  inputElement.className = 'input-overlay'
+
+  console.log(window.getComputedStyle(target).left)
+  console.log(target.getBoundingClientRect().left)
+
+  inputElement.style.top = `${0}px`
+  inputElement.style.left = `${target.getBoundingClientRect().left - mathEqContainer.getBoundingClientRect().left}px`
+  inputElement.style.width = `${target.getBoundingClientRect().width - inputBorderWidth}px`
+  inputElement.style.top = `${window.getComputedStyle(target).height}px`
+  inputElement.style.minWidth = `20px`
+
+  console.log(target.getBoundingClientRect().width - inputBorderWidth)
+
+  mathEqContainer.appendChild(inputElement)
+}
+
 function changeM() {
   const inputBorderWidth = 2;
 
