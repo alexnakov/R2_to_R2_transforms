@@ -2,7 +2,9 @@ var linesCoords = []
 var l1;
 var l2;
 
-window.onload = function() {
+window.onload = draw2dPlane()
+
+function draw2dPlane() {
   const svg = document.getElementById('mySVG');
   for (let i = -500; i <= 500; i += 50) {
     let line1 = document.createElementNS("http://www.w3.org/2000/svg", 'line')
@@ -38,14 +40,21 @@ function changeParams() {
 
 function applyLinearTransform() {
   let coords2 = []
+  
+  const paramsElements = document.querySelectorAll(`span.param`)
+  const paramA = Number(paramsElements[0].textContent)
+  const paramB = Number(paramsElements[1].textContent)
+  const paramC = Number(paramsElements[2].textContent)
+  const paramD = Number(paramsElements[3].textContent)
+
   for (let i = 0; i < linesCoords.length; i++) {
     let line = linesCoords[i]
     let line1 = line.map((pt) => pt - 150) // Now 0,0
     let line2 = []
-    line2.push(2*line1[0] + line1[2]) // x1
-    line2.push(2*line1[1] + line1[3]) // x2
-    line2.push(line1[0] - 3*line1[2]) // y1
-    line2.push(line1[1] - 3*line1[3]) // y2
+    line2.push(paramA*line1[0] + paramB*line1[2]) // x1
+    line2.push(paramA*line1[1] + paramB*line1[3]) // x2
+    line2.push(paramC*line1[0] - paramD*line1[2]) // y1
+    line2.push(paramC*line1[1] - paramD*line1[3]) // y2
     let line3 = line2.map((pt) => pt + 150)
     coords2.push(line3)
   }
