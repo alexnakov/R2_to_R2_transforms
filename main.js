@@ -27,86 +27,16 @@ window.onload = function() {
   l1 = linesCoords
 }
 
-function changeToInput(target) {
-  const inputBorderWidth = 4;
-  const mathEqContainer = target.closest('.math-container')
+function changeParams() {
+  const inputElements = document.querySelectorAll(`input.input-for-param`)
+  const paramsElements = document.querySelectorAll(`span.param`)
 
-  const inputElement = document.createElementNS('http://www.w3.org/1999/xhtml','input')
-  inputElement.type = 'text'
-  inputElement.value = target.textContent
-  inputElement.className = 'input-overlay'
-  inputElement.setAttribute('data-id', `${target.getAttribute(`data-id`)}`)
-
-  inputElement.style.top = `${0}px`
-  inputElement.style.left = `${target.getBoundingClientRect().left - mathEqContainer.getBoundingClientRect().left}px`
-  inputElement.style.width = `${target.getBoundingClientRect().width - inputBorderWidth}px`
-  inputElement.style.top = `${window.getComputedStyle(target).height}px`
-  inputElement.style.minWidth = `20px`
-
-  mathEqContainer.appendChild(inputElement)
-}
-
-function changeM() {
-  const inputBorderWidth = 2;
-
-  const miElement = document.getElementById('editable-mi')
-  const mathEqContainer = miElement.closest('.math-container')
-
-  const inputElement = document.createElementNS('http://www.w3.org/1999/xhtml','input')
-  inputElement.type = 'text'
-  inputElement.value = miElement.textContent
-  inputElement.className = 'input-overlay'
-
-  const miElementRect = miElement.getBoundingClientRect()
-  const mathEqContainerRect = mathEqContainer.getBoundingClientRect()
-
-  inputElement.style.top = `${miElementTop}px`
-  inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left}px`
-  inputElement.style.width = `${miElementRect.width - 2*inputBorderWidth}px`
-  inputElement.style.height = `${miElementHeight}px`
-
-  mathEqContainer.appendChild(inputElement)
-  miElement.style.visibility = 'hidden'
-  disableChangeMButton()
-}
-
-function disableChangeMButton() {
-  const changeBtn = document.getElementById('change-btn')
-  changeBtn.style.pointerEvents = 'none'
-}
-
-function enableChangeMButton() {
-  const changeBtn = document.getElementById('change-btn')
-  changeBtn.style.pointerEvents = 'auto'
-}
-
-function saveNewM() {
-  // const inputElements = document.getElementsByClassName('input-overlay')
-  // console.log(inputElements)
-  // if (inputElements.includes('')) {return;}
-
-  const miElements = document.querySelectorAll(`mi[mi-changeable]`)
-  const inputElements = document.querySelectorAll(`input.input-overlay`)
-
-  for (let inputElement of inputElements) {
-    if (inputElement == '') {continue}
-
-    console.log(inputElement.getAttribute(`data-id`))
-    console.log(`mi[data-id="${inputElement.getAttribute(`data-id`)}"]`)
-    const miElement = document.querySelector(`mi[mi-changeable]`)
-    console.log(miElement)
+  for (let i = 0; i <  inputElements.length; i++) {
+    paramsElements[i].textContent = inputElements[i].value
   }
-
-  // const miElement = document.getElementById('editable-mi')
-  // miElement.style.fontSize = '36px'
-  // miElement.style.visibility = 'visible'
-  // miElement.textContent = inputElement.value
-
-  // inputElement.remove()
-  // enableChangeMButton()
 }
 
-const applyLinearTransform = function() {
+function applyLinearTransform() {
   coords2 = []
   for (let i = 0; i < linesCoords.length; i++) {
     let line = linesCoords[i]
