@@ -37,7 +37,7 @@ function changeParams() {
 }
 
 function applyLinearTransform() {
-  coords2 = []
+  let coords2 = []
   for (let i = 0; i < linesCoords.length; i++) {
     let line = linesCoords[i]
     let line1 = line.map((pt) => pt - 150) // Now 0,0
@@ -57,16 +57,5 @@ function applyLinearTransform() {
     line.setAttribute('x2', coords2[i][1])
     line.setAttribute('y1', coords2[i][2])
     line.setAttribute('y2', coords2[i][3])
-  }
-}
-
-function changeLines(matrix) {
-  let allLines = document.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'line')
-  for (let i = 0; i < allLines.length; i++) {
-    let line = allLines[i]
-    line.setAttribute('x1', matrix[i][0])
-    line.setAttribute('x2', matrix[i][1])
-    line.setAttribute('y1', matrix[i][2])
-    line.setAttribute('y2', matrix[i][3])
   }
 }
