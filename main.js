@@ -35,7 +35,7 @@ function changeToInput(target) {
   inputElement.type = 'text'
   inputElement.value = target.textContent
   inputElement.className = 'input-overlay'
-  inputElement.setAttribute('data-id', `${target.getAttribute(`data-id`)}`)
+  inputElement.setAttribute('data', `${target.getAttribute(`data`)}`)
 
   inputElement.style.top = `${0}px`
   inputElement.style.left = `${target.getBoundingClientRect().left - mathEqContainer.getBoundingClientRect().left}px`
@@ -87,18 +87,24 @@ function saveNewM() {
 
   const miElements = document.querySelectorAll(`mi[mi-changeable]`)
   const inputElements = document.querySelectorAll(`input.input-overlay`)
+  const mathEqContainer = miElements[0].closest('.math-container')
 
-  console.log(miElements)
-  console.log(inputElements)
+  if (inputElements.length === 1) {
+    const dataId = inputElements[0].getAttribute(`data`)
+    const miElementsArray = Array.from(miElements)
 
-  // for (let inputElement of inputElements) {
-  //   if (inputElement == '') {continue}
+    console.log(miElementsArray)
 
-  //   console.log(inputElement.getAttribute(`data-id`))
-  //   console.log(`mi[data-id="${inputElement.getAttribute(`data-id`)}"]`)
-  //   const miElement = document.querySelector(`mi[mi-changeable]`)
-  //   console.log(miElement)
-  // }
+    const miElementIndex = miElementsArray.findIndex(miEl => miEl.getAttribute(`data`) == dataId)
+    const newMiElement = miElements[miElementIndex]
+    newMiElement.textContent = `${inputElements[0].value}`
+
+    for (let i = 0; i < inputElements.length; i++) {
+      inputElements[i].remove()
+    }
+
+    miElements[miElementIndex].parentNode.replaceChild(newMiElement, miElements[miElementIndex])  
+  }
 
   // const miElement = document.getElementById('editable-mi')
   // miElement.style.fontSize = '36px'
