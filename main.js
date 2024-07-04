@@ -1,11 +1,10 @@
-const linesCoords = []
-let l1;
-let l2;
+var linesCoords = []
+var l1;
+var l2;
 
-var miElementHeight = miElement.getBoundingClientRect().height;
-var miElementTop = miElement.getBoundingClientRect().top - mathEqContainerRect.getBoundingClientRect().top
+window.onload = draw2dPlane()
 
-window.onload = function() {
+function draw2dPlane() {
   const svg = document.getElementById('mySVG');
   for (let i = -500; i <= 500; i += 50) {
     let line1 = document.createElementNS("http://www.w3.org/2000/svg", 'line')
@@ -30,63 +29,32 @@ window.onload = function() {
   l1 = linesCoords
 }
 
-function changeM() {
-  const inputBorderWidth = 2;
+function changeParams() {
+  const inputElements = document.querySelectorAll(`input.input-for-param`)
+  const paramsElements = document.querySelectorAll(`span.param`)
 
-  const miElement = document.getElementById('editable-mi')
-  const mathEqContainer = miElement.closest('.math-container')
-
-  const inputElement = document.createElementNS('http://www.w3.org/1999/xhtml','input')
-  inputElement.type = 'text'
-  inputElement.value = miElement.textContent
-  inputElement.className = 'input-overlay'
-
-  const miElementRect = miElement.getBoundingClientRect()
-  const mathEqContainerRect = mathEqContainer.getBoundingClientRect()
-
-  inputElement.style.top = `${miElementTop}px`
-  inputElement.style.left = `${miElementRect.left - mathEqContainerRect.left}px`
-  inputElement.style.width = `${miElementRect.width - 2*inputBorderWidth}px`
-  inputElement.style.height = `${miElementHeight}px`
-
-  mathEqContainer.appendChild(inputElement)
-  miElement.style.visibility = 'hidden'
-  disableChangeMButton()
+  for (let i = 0; i <  inputElements.length; i++) {
+    paramsElements[i].textContent = inputElements[i].value
+  }
 }
 
-function disableChangeMButton() {
-  const changeBtn = document.getElementById('change-btn')
-  changeBtn.style.pointerEvents = 'none'
-}
+function applyLinearTransform() {
+  let coords2 = []
+  
+  const paramsElements = document.querySelectorAll(`span.param`)
+  const paramA = Number(paramsElements[0].textContent)
+  const paramB = Number(paramsElements[1].textContent)
+  const paramC = Number(paramsElements[2].textContent)
+  const paramD = Number(paramsElements[3].textContent)
 
-function enableChangeMButton() {
-  const changeBtn = document.getElementById('change-btn')
-  changeBtn.style.pointerEvents = 'auto'
-}
-
-function saveNewM() {
-  const inputElement = document.getElementsByClassName('input-overlay')[0]
-  if (inputElement.value == '') {return;}
-
-  const miElement = document.getElementById('editable-mi')
-  miElement.style.fontSize = '36px'
-  miElement.style.visibility = 'visible'
-  miElement.textContent = inputElement.value
-
-  inputElement.remove()
-  enableChangeMButton()
-}
-
-const applyLinearTransform = function() {
-  coords2 = []
   for (let i = 0; i < linesCoords.length; i++) {
     let line = linesCoords[i]
     let line1 = line.map((pt) => pt - 150) // Now 0,0
     let line2 = []
-    line2.push(2*line1[0] + line1[2]) // x1
-    line2.push(2*line1[1] + line1[3]) // x2
-    line2.push(line1[0] - 3*line1[2]) // y1
-    line2.push(line1[1] - 3*line1[3]) // y2
+    line2.push(paramA*line1[0] + paramB*line1[2]) // x1
+    line2.push(paramA*line1[1] + paramB*line1[3]) // x2
+    line2.push(paramC*line1[0] - paramD*line1[2]) // y1
+    line2.push(paramC*line1[1] - paramD*line1[3]) // y2
     let line3 = line2.map((pt) => pt + 150)
     coords2.push(line3)
   }
@@ -98,16 +66,5 @@ const applyLinearTransform = function() {
     line.setAttribute('x2', coords2[i][1])
     line.setAttribute('y1', coords2[i][2])
     line.setAttribute('y2', coords2[i][3])
-  }
-}
-
-function changeLines(matrix) {
-  let allLines = document.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'line')
-  for (let i = 0; i < allLines.length; i++) {
-    let line = allLines[i]
-    line.setAttribute('x1', matrix[i][0])
-    line.setAttribute('x2', matrix[i][1])
-    line.setAttribute('y1', matrix[i][2])
-    line.setAttribute('y2', matrix[i][3])
   }
 }

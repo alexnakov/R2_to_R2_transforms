@@ -10,15 +10,14 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="main.js"></script>
-
+  <link rel="stylesheet" href="math-styles.css" />
   <style>
     h1, h2 { text-align: center; font-family: "Lora"; }
     #eq1 { font-size: 36px; }
     #editable-mi {cursor: pointer;color:red;}
     button {display:block;margin:20px auto}
-    .math-container { 
-      display: inline-block;
-      position: relative;
+    svg {
+      background-color: rgb(215, 233, 240);
     }
     .input-overlay {
       position: absolute; /* Position relative to the nearest positioned ancestor */
@@ -32,6 +31,12 @@
       font-size: inherit;
       font-family: inherit;
     }
+    .param {
+      color: red;
+    }
+    input {
+      width: 40px;
+    }
   </style>
   <script defer src="main.js"></script>
 </head>
@@ -40,19 +45,27 @@
     <h1>R2 -> R2 vizualiser</h1>
     <h2>Transformation t</h2>
     
-    <div class="math-container">
-      <math id="eq1" xmlns="http://www.w3.org/1998/Math/MathML">
-        <mi>y</mi>
-        <mo>=</mo>
-        <mi id="editable-mi">12</mi>
-        <mi>x</mi>
-        <mo>+</mo>
-        <mi>c</mi>
-      </math>
+    <div class="math-flex-center-container" style="display:flex;align-items:center;justify-content:center;">
+      <div style="display:inline-block" class="math showcase">
+        <span class="surround square matrix" style="--c: 1">
+          <span>x</span><span>y</span>
+            </div><span><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#x21a6;</mo></math>
+          <div style="display:inline-block" class="math showcase"><span class="surround square matrix" style="--c: 1">
+            <span><span class="param a">a</span>x<span>&nbsp;</span>+<span>&nbsp;</span><span class="param b">b</span>y</span>
+            <span><span class="param c">c</span>x<span>&nbsp;</span>+<span>&nbsp;</span><span class="param d">d</span>y</span>
+          </div>
+        <span>  
     </div>
 
-    <button id="change-btn" onclick="changeM()">Change M</button>
-    <button id="save-btn" onclick="saveNewM()">Save M</button>
+    <div style="width: 100%; display: flex; justify-content: center; margin-top: 15px;">
+      <span>a=</span><input class="input-for-param">
+      <span>b=</span><input class="input-for-param">
+      <span>c=</span><input class="input-for-param">
+      <span>d=</span><input class="input-for-param">
+    </div>
+    
+
+    <button id="change-btn" onclick="changeParams()">Change Parameters a, b, c and d</button>
     <button onclick="applyLinearTransform()">Transform Plane</button>
 
     <svg id="mySVG" style="width:300px;height:300px;border:1px solid black;display:block;margin:auto;">
