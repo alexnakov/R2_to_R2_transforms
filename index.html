@@ -51,21 +51,21 @@
           <span>x</span><span>y</span>
             </div><span><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#x21a6;</mo></math>
           <div style="display:inline-block" class="math showcase"><span class="surround square matrix" style="--c: 1">
-            <span><span class="param a">a</span>x<span>&nbsp;</span>+<span>&nbsp;</span><spam class="param b">b</spam>y</span>
-            <span><span class="param c">c</span>x<span>&nbsp;</span>+<span>&nbsp;</span><spam class="param d">d</spam>y</span>
+            <span><span class="param a">a</span>x<span>&nbsp;</span>+<span>&nbsp;</span><span class="param b">b</span>y</span>
+            <span><span class="param c">c</span>x<span>&nbsp;</span>+<span>&nbsp;</span><span class="param d">d</span>y</span>
           </div>
         <span>  
     </div>
 
-    <div style="width: 100%; display: flex; justify-content: center;">
-      <span>a=</span><input>
-      <span>b=</span><input>
-      <span>c=</span><input>
-      <span>d=</span><input>
+    <div style="width: 100%; display: flex; justify-content: center; margin-top: 15px;">
+      <span>a=</span><input class="input-for-param">
+      <span>b=</span><input class="input-for-param">
+      <span>c=</span><input class="input-for-param">
+      <span>d=</span><input class="input-for-param">
     </div>
     
 
-    <button id="change-btn" onclick="changeM()">Change Parameters a, b, c and d</button>
+    <button id="change-btn" onclick="changeParams()">Change Parameters a, b, c and d</button>
     <button id="save-btn" onclick="saveNewM()">Save M</button>
     <button onclick="applyLinearTransform()">Transform Plane</button>
 
