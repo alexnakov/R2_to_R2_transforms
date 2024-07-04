@@ -88,14 +88,17 @@ function saveNewM() {
   const miElements = document.querySelectorAll(`mi[mi-changeable]`)
   const inputElements = document.querySelectorAll(`input.input-overlay`)
 
-  for (let inputElement of inputElements) {
-    if (inputElement == '') {continue}
+  console.log(miElements)
+  console.log(inputElements)
 
-    console.log(inputElement.getAttribute(`data-id`))
-    console.log(`mi[data-id="${inputElement.getAttribute(`data-id`)}"]`)
-    const miElement = document.querySelector(`mi[mi-changeable]`)
-    console.log(miElement)
-  }
+  // for (let inputElement of inputElements) {
+  //   if (inputElement == '') {continue}
+
+  //   console.log(inputElement.getAttribute(`data-id`))
+  //   console.log(`mi[data-id="${inputElement.getAttribute(`data-id`)}"]`)
+  //   const miElement = document.querySelector(`mi[mi-changeable]`)
+  //   console.log(miElement)
+  // }
 
   // const miElement = document.getElementById('editable-mi')
   // miElement.style.fontSize = '36px'
