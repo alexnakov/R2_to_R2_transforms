@@ -29,12 +29,30 @@ function draw2dPlane() {
   l1 = linesCoords
 }
 
+function checkParamsAreNumbers(a,b,c,d) {
+  let arr = [a,b,c,d]
+  return arr.every(param => Number.isFinite(param))
+}
+
+function cleanInputBoxes(arrayOfInputs) {
+  for (let input of arrayOfInputs) {
+    input.value = '';
+  }
+}
+
 function changeParams() {
   const inputElements = document.querySelectorAll(`input.input-for-param`)
   const paramsElements = document.querySelectorAll(`span.param`)
 
   for (let i = 0; i <  inputElements.length; i++) {
-    paramsElements[i].textContent = inputElements[i].value
+    let number = Number(inputElements[i].value)
+    if (!Number.isFinite(number)) {
+      alert('Parameter should all be real numbers')
+      cleanInputBoxes(inputElements)
+      return;
+    } else {
+      paramsElements[i].textContent = number  
+    }
   }
 }
 
